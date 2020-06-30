@@ -1,0 +1,31 @@
+extends ../layouts/common.pug
+block content
+    //- - var demo = lengthCart2
+    //- if lengthCart2
+    //-     - var demo= lengthCart2
+    div(style="margin: 30px 0 40px; font-size: 1.25rem") 
+        span(style="font-weight: 500") Giỏ hàng 
+        em(style="font-size: 1rem") ( có #{lengthCart} sản phẩm )
+    .row
+        .col-9
+            each cart in carts
+                .row.mb-3(style="background-color: #f2f4f6; padding-top: 15px; padding-bottom: 15px; border-radius: 5px")
+                    .col-2
+                       div(style=`background-image: url(${cart._doc.coverImage}); background-size: cover; background-position: center; height: 110px; width: 100px;`) 
+                    .col-6
+                        h5= cart._doc.title
+                        div= cart._doc.description
+                    .col-4
+                        h5.mb-3 Số lượng
+                        ul.count
+                            li 
+                                a(href="/cart/reduce/" + cart._doc._id) -
+                            li= cart.count
+                            li
+                                a(href="/cart/incremate/" + cart._doc._id) +     
+        .col-3
+            if carts.length >= 1
+                div(style="background-color: #f2f4f6; padding: 15px; margin-bottom: 15px; border-radius: 5px;")
+                    div.mb-4.pb-4(style="border-bottom: solid 1px #b7b7b9;") Tạm tính:
+                    div.pb-4 Thành tiền:
+                a.btn.btn-info(style="display:block; width: 100%",href="/cart/transaction") Giao dịch

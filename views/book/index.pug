@@ -1,0 +1,34 @@
+extends ../layouts/common.pug
+block content 
+  div.row
+    each todo in todos
+      div.col-3.mb-4
+        .card(style='width: 100%; background-color: #f8f8f8;')
+          div(style=`background-image: url(${todo.coverImage}); background-size: cover; background-position: center; height: 260px`)
+          .card-body
+            h5.card-title= todo.stt + '. ' + todo.title+':'
+            p.card-text.conten-book= todo.description
+            if userAdmin
+              a.mr-2.btn.btn-info(href='book/delete/' + todo.id) Xóa
+              a.mr-2.btn.btn-info(href='book/update/' + todo.id) Sửa
+              a.btn.btn-info(href='/book/view/' + todo.id) View
+            else 
+              a.mr-2.btn.btn-info(href='/book/view/' + todo.id) View
+              a.btn.btn-info(href='/book/addToCart/' + todo.id) Thêm vào rỏ
+  if userAdmin
+        div
+          a.btn.btn-info(href="/book/post") 
+            i.fa.fa-plus.pr-1(aria-hidden='true') 
+            span Thêm sách   
+  if(totalPages > 1)
+    nav(aria-label='Page navigation example')
+      ul.pagination.justify-content-center
+        li(class= page===1?"page-item disabled":"page-item")
+          a.page-link(href='/book?page='+ parseInt(page - 1), tabindex='-1', aria-disabled='true') Previous
+
+        each item in pagination
+          li(class= item===page?"page-item active":"page-item")
+              a.page-link(href='/book?page='+ item)=item
+
+        li(class= page===totalPages?"page-item disabled":"page-item")
+          a.page-link(href='/book?page='+ parseInt(page + 1)) Next 

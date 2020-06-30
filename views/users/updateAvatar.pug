@@ -1,0 +1,7 @@
+extends ../layouts/common.pug
+block content
+    h5 Update Avatar
+    form(action="/users/update/avatar/" + isUser.id + "/done", method="POST", enctype="multipart/form-data")
+        input.form-control-file(type="file" name="avatar")
+        div(style="margin-top: 16px")
+            button.btn.btn-info Thêm
