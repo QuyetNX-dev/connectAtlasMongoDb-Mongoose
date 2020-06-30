@@ -1,0 +1,41 @@
+html
+    head
+        link(rel="stylesheet", href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css") 
+        link(rel='shortcut icon', type='image/png', href='https://cdn.glitch.com/5ffc7aff-b028-4f88-8fff-66b49fb6ac2b%2Ffavicon.png?v=1588496277800/favicon.png')
+        link(rel="stylesheet", href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css")
+        link(rel="stylesheet", href="/style/style.css")
+    body
+        div.wrap-label
+            nav.navbar.navbar-expand-lg.navbar-light.bg-light
+                .container-fluid
+                    .container
+                        a.navbar-brand(href='/') 
+                            span Thư viện
+                        button.navbar-toggler(type='button', data-toggle='collapse', data-target='#navbarText', aria-controls='navbarText', aria-expanded='false', aria-label='Toggle navigation')
+                            span.navbar-toggler-icon
+                        #navbarText.collapse.navbar-collapse
+                            ul.navbar-nav.mr-auto
+                                li(class=routebook?"nav-item active":"nav-item")
+                                    a.nav-link(href='/book') Kho sách
+                                        span.sr-only (current)
+                                li(class=routeuser?"nav-item active":"nav-item")
+                                    a.nav-link(href='/users') Khách hàng
+                                li(class=routetransaction?"nav-item active":"nav-item")
+                                    a.nav-link(href='/transection') Giao dịch
+                                li(class=routebasket?"nav-item active notification":"nav-item notification")
+                                    a.nav-link(href="/cart") Giỏ hàng
+                                    if lengthCart
+                                        div= lengthCart 
+                            div.nav-item.d-flex
+                                if userMember
+                                    a(class="nav-link disabled", href="" tabindex="-1" aria-disabled="true")=userMember.name
+                                    div(style=`background-image: url(${userMember.avatarUrl}); margin:auto; background-size: cover; width: 40px; height: 40px; border-radius: 50%`)
+                                else if userAdmin
+                                    a(class="nav-link disabled", href="" tabindex="-1" aria-disabled="true")=userAdmin.name
+                                    div(style=`background-image: url(${userAdmin.avatarUrl}); margin:auto; background-size: cover; width: 40px; height: 40px; border-radius: 50%`)
+                                else 
+                                    a(class="nav-link", href="/login" tabindex="-1" aria-disabled="true") Đăng nhập
+            .container-fluid
+                .container       
+                    block header
+                    block content

@@ -1,0 +1,8 @@
+extends ../layouts/common.pug
+block content
+    h5 Thay ảnh bìa sách
+    form(action="/book/update/cover-image/" + id + '/done', method="POST", enctype='multipart/form-data')
+        div.mb-3
+            p(style="margin-bottom: 5px") Ảnh bìa:
+                input.form-control-file(type="file" name="coverimage") 
+        button Thay ảnh

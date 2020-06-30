@@ -1,0 +1,6 @@
+extends ../layouts/common.pug
+block content
+    .row
+        .col
+            div.mb-3(style=`background-image: url(${isBook.coverImage}); background-size: cover; background-position: center; height: 350px`)
+            p= isBook.description

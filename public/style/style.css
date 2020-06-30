@@ -1,0 +1,65 @@
+/* Book css-------------------------------- */
+.list-book li {
+    border-bottom: solid 1px;
+}
+.list-users li {
+    border-bottom: solid 1px gray;
+}
+
+a {
+  text-decoration: none !important;
+  padding-right: 10px;
+  color: rgb(26, 25, 25);
+}
+.table tr th,
+td {
+  border-bottom: solid 1px gray;
+  padding: 4px 10px;
+}
+
+ul {
+  list-style-type: none;
+  padding: 0;
+  margin 0;
+}
+
+.conten-book{
+    overflow: hidden;
+    text-overflow: ellipsis;
+    -webkit-line-clamp: 3;
+    display: -webkit-box;
+    -webkit-box-orient: vertical;
+}
+.notification{
+  position: relative;
+}
+.notification div{
+  position: absolute;
+  top: 4px;
+  right: -9px;
+  background-color: red;
+  padding: 0px 5px;
+  border-radius: 5px;
+  font-size: 10px;
+  color: #fff;
+}
+.count{
+  display: flex;
+}
+.count li {
+  border-collapse: collapse;
+  border: solid 1px gray;
+  width: 25px;
+  text-align: center;
+}
+.count li a {
+  padding: 0;
+  display: block;
+  text-align: center;
+}
+.count li:nth-child(1){
+  border-right: none;
+}
+.count li:nth-child(3){
+  border-left: none
+}
